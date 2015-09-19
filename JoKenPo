@@ -1,0 +1,98 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package jokenpo;
+
+import static java.lang.Boolean.TRUE;
+import java.util.Random;
+import java.util.Scanner;
+
+/**
+ *
+ * @author ezequiel.fsantos
+ */
+public class JoKenPo {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+          Random r = new Random();
+       // caso queira mudar o range
+       int menor = 1;
+       int maior = 3;
+       int sorteado;
+       sorteado = r.nextInt(maior - menor) + menor;
+       System.out.println("Sorteado: " + sorteado); 
+       Scanner keyboard = new Scanner(System.in);
+       System.out.println("1 - PEDRA\n 2 - PAPEL\n 3 - TESOURA\n");
+       int digitado = keyboard.nextInt();
+       
+       int jogadas = 0;
+       int pontosUser = 0;
+       int pontosMaquina = 0;
+       
+       while(jogadas < 5){
+           jogadas ++;
+           
+           if(digitado == 1 && sorteado == 1)           
+           {
+               System.out.println("Empate\n");
+           }
+           else if(digitado == 1 && sorteado == 2)
+           {
+               System.out.println("Maquina Vence\n");
+               pontosMaquina++;
+           }
+           else if(digitado == 1 && sorteado == 3)  
+           {
+               System.out.println("Usuario Vence\n");    
+               pontosUser++;
+           }
+           else if(digitado == 2 && sorteado == 1)  
+           {
+              System.out.println("Usuario Vence\n");   
+              pontosUser++;
+           }
+           else if(digitado == 2 && sorteado == 2)  
+           {
+               System.out.println("Empate\n");
+             
+           }
+           else if(digitado == 2 && sorteado == 3)    
+           {
+               System.out.println("Maquina Vence\n");
+               pontosMaquina++;
+           }
+            else if(digitado == 3 && sorteado == 1)    
+           {
+               System.out.println("Maquina Vence\n");
+               pontosMaquina++;
+           }
+            else if(digitado == 3 && sorteado == 2)    
+           {
+               System.out.println("Usuario Vence\n");
+               pontosUser++;
+           }
+            else if(digitado == 3 && sorteado == 3)    
+           {
+               System.out.println("Empate");
+           }
+           sorteado = r.nextInt(maior - menor) + menor;
+           System.out.println("Maquina digitou" + sorteado);
+           digitado = keyboard.nextInt();
+       }
+           if (pontosUser > pontosMaquina) {
+               System.out.println("USUARIO VENCEU");
+           }else if (pontosUser < pontosMaquina){
+               System.out.println("MAQUINA VENCEU");
+           }else {
+               System.out.println("Empate");
+           }
+    }
+    
+
+    
+}
